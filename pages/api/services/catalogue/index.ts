@@ -1,14 +1,13 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "isomorphic-unfetch";
+import { getServerBaseUrl } from "@helpers/next/getEnv";
 
 const getCatalogueRequest = async (req: NextApiRequest) => {
-  const apiResponse = await fetch(
-    "http://localhost:8080/api/services/catalogue",
-    {
-      method: req.method,
-    }
-  );
+  const baseUrl = getServerBaseUrl();
+  const apiResponse = await fetch(`${baseUrl}/api/services/catalogue`, {
+    method: req.method,
+  });
 
   const body = await apiResponse.json();
 
