@@ -17,6 +17,9 @@ const testStub: StubMapping = {
   },
   response: {
     status: 200,
+    jsonBody: {
+      test: "test",
+    },
     headers: {
       Content: "application/json",
       "Access-Allow-All-Origins": "*",
@@ -25,6 +28,11 @@ const testStub: StubMapping = {
 };
 
 describe("Catalogue api", () => {
+  beforeEach(async () => {
+    await dnataApiClient.mappings.resetAllMappings();
+    await dnataApiClient.requests.resetAllRequests();
+  });
+
   it("makes a successful request", async () => {
     await dnataApiClient.mappings.createMapping(testStub);
 
