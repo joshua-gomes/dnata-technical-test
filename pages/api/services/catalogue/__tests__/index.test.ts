@@ -70,7 +70,7 @@ describe("Catalogue api", () => {
   });
 
   it.each(["POST", "DELETE", "OPTIONS", "PATCH", "PUT"])(
-    "sends an expected error response when an handled request with %s method is made",
+    "sends an expected error response when an unhandled request when %s method is made",
     async (requestMethod) => {
       await testApiHandler({
         handler: endpoint,
