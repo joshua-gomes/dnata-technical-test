@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@libs/*": ["libs/*"],
-      "@helpers/*": ["libs/helpers/*"]
+      "@helpers/*": ["libs/shared/helpers/*"],
+      "@components/*": ["libs/shared/components/*"]
     }
   },
   "include": [

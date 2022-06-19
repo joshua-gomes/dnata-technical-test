@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "isomorphic-unfetch";
-import { getDnataApiBaseUrl } from "@helpers/next/getEnv";
+import { getDnataApiBaseUrl } from "@libs/shared/helpers/next/getEnv";
 
 const getCatalogueRequest = async (req: NextApiRequest) => {
   const baseUrl = getDnataApiBaseUrl();

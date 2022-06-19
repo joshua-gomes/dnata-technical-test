@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
-import { getNextApiBaseUrl } from "@libs/helpers/next/getEnv";
+import { getNextApiBaseUrl } from "@libs/shared/helpers/next/getEnv";
+import CataloguePage from "@libs/pages/CataloguePage";
 
-const Catalogue: NextPage = () => {
-  return <div></div>;
+const Catalogue: NextPage = (props) => {
+  return <CataloguePage {...props} />;
 };
 
 export async function getServerSideProps() {
