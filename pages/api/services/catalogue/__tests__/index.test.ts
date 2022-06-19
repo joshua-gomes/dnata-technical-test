@@ -2,6 +2,7 @@ import { testApiHandler } from "next-test-api-route-handler";
 import { WireMockRestClient } from "wiremock-rest-client";
 import { LoggedRequest } from "wiremock-rest-client/dist/model/logged-request.model";
 import { StubMapping } from "wiremock-rest-client/dist/model/stub-mapping.model";
+import { catalogueApiResponseBody } from "./constants";
 import endpoint from "../index";
 
 const dnataApiClient = new WireMockRestClient("http://localhost:8080", {
@@ -17,9 +18,7 @@ const testStub: StubMapping = {
   },
   response: {
     status: 200,
-    jsonBody: {
-      test: "test",
-    },
+    jsonBody: catalogueApiResponseBody,
     headers: {
       Content: "application/json",
       "Access-Allow-All-Origins": "*",
@@ -54,7 +53,22 @@ describe("Catalogue api", () => {
     });
   });
 
-  it("responds with the expecpted catalogue response body", () => {});
+  it("responds with the expected catalogue response body", async () => {
+    await dnataApiClient.mappings.createMapping(testStub);
+
+    await testApiHandler({
+      handler: endpoint,
+      test: async ({ fetch }) => {
+        const response = await fetch({
+          method: "GET",
+        });
+
+        const body = await response.json();
+
+        expect(body).toEqual(catalogueApiResponseBody);
+      },
+    });
+  });
 
   it("sends an expected error response when an unhandled request is made", () => {});
 });
