@@ -2,20 +2,42 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "isomorphic-unfetch";
 
+const getCatalogueRequest = async (req: NextApiRequest) => {
+  const apiResponse = await fetch(
+    "http://localhost:8080/api/services/catalogue",
+    {
+      method: req.method,
+    }
+  );
+
+  const body = await apiResponse.json();
+
+  return { status: apiResponse.status, body };
+};
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  let apiResponse;
   try {
     // Would move the host domain to an .env file to allow flexibility between different environments
-    const apiResponse = await fetch(
-      "http://localhost:8080/api/services/catalogue"
-    );
 
-    const body = await apiResponse.json();
+    switch (req.method) {
+      case "GET":
+        apiResponse = await getCatalogueRequest(req);
+        break;
+      default:
+        apiResponse = {
+          status: 400,
+          body: {
+            message: "Bad Request",
+          },
+        };
+    }
 
-    res.status(apiResponse.status).json(body);
-  } catch (e: any) {
+    res.status(apiResponse.status).json(apiResponse.body);
+  } catch (e) {
     res.status(500).json({ message: "Server Error" });
   }
 }

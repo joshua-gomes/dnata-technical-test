@@ -27,14 +27,15 @@ const testStub: StubMapping = {
 };
 
 describe("Catalogue api", () => {
+  beforeAll(async () => {
+    await dnataApiClient.mappings.createMapping(testStub);
+  });
+
   beforeEach(async () => {
-    await dnataApiClient.mappings.resetAllMappings();
     await dnataApiClient.requests.resetAllRequests();
   });
 
   it("makes a successful request", async () => {
-    await dnataApiClient.mappings.createMapping(testStub);
-
     await testApiHandler({
       handler: endpoint,
       test: async ({ fetch }) => {
@@ -54,8 +55,6 @@ describe("Catalogue api", () => {
   });
 
   it("responds with the expected catalogue response body", async () => {
-    await dnataApiClient.mappings.createMapping(testStub);
-
     await testApiHandler({
       handler: endpoint,
       test: async ({ fetch }) => {
@@ -70,5 +69,22 @@ describe("Catalogue api", () => {
     });
   });
 
-  it("sends an expected error response when an unhandled request is made", () => {});
+  it.each(["POST", "DELETE", "OPTIONS", "PATCH", "PUT"])(
+    "sends an expected error response when an handled request with %s method is made",
+    async (requestMethod) => {
+      await testApiHandler({
+        handler: endpoint,
+        test: async ({ fetch }) => {
+          const response = await fetch({
+            method: requestMethod,
+          });
+
+          const body = await response.json();
+
+          expect(response.status).toEqual(400);
+          expect(body).toEqual({ message: "Bad Request" });
+        },
+      });
+    }
+  );
 });
