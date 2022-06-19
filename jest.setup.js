@@ -1,5 +1,5 @@
 jest.mock("next/config", () => () => ({
   serverRuntimeConfig: {
-    baseUrl: "http://localhost:8080",
+    dnataApiBaseUrl: "http://localhost:8080",
   },
 }));
