@@ -2,12 +2,21 @@ import getConfig from "next/config";
 
 // Would write test for these if given more time
 export const getServerRuntimeConfig = () => {
-  console.log("getConfig", getConfig());
   return getConfig()?.serverRuntimeConfig;
 };
 
-export const getServerBaseUrl = () => {
-  const { baseUrl } = getServerRuntimeConfig();
+export const getPublicRuntimeConfig = () => {
+  return getConfig()?.publicRuntimeConfig;
+};
 
-  return baseUrl;
+export const getDnataApiBaseUrl = () => {
+  const { dnataApiBaseUrl } = getServerRuntimeConfig();
+
+  return dnataApiBaseUrl;
+};
+
+export const getNextApiBaseUrl = () => {
+  const { nextApiBaseUrl } = getPublicRuntimeConfig();
+
+  return nextApiBaseUrl;
 };

@@ -1,10 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import fetch from "isomorphic-unfetch";
-import { getServerBaseUrl } from "@helpers/next/getEnv";
+import { getDnataApiBaseUrl } from "@helpers/next/getEnv";
 
 const getCatalogueRequest = async (req: NextApiRequest) => {
-  const baseUrl = getServerBaseUrl();
+  const baseUrl = getDnataApiBaseUrl();
   const apiResponse = await fetch(`${baseUrl}/api/services/catalogue`, {
     method: req.method,
   });
@@ -20,8 +20,6 @@ export default async function handler(
 ) {
   let apiResponse;
   try {
-    // Would move the host domain to an .env file to allow flexibility between different environments
-
     switch (req.method) {
       case "GET":
         apiResponse = await getCatalogueRequest(req);
