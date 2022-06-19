@@ -7,11 +7,12 @@ const SidebarSC = styled.aside`
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid black;
 `;
 
-const Sidebar = (): ReactElement => {
+const Sidebar = ({ ...props }): ReactElement => {
   return (
-    <SidebarSC>
+    <SidebarSC {...props}>
       <span>Sidebar</span>
     </SidebarSC>
   );

@@ -1,5 +1,5 @@
 {
-  "reqest": {
+  "request": {
     "url": "/api/services/catalogue",
     "method": "GET"
   },
@@ -10,53 +10,53 @@
       "data": [
         {
           "id": 1,
-          "imageSrc": "/images/Aghia-Paraskevi.png",
+          "imageSrc": "/images/Aghia-Paraskevi.avif",
           "title": "Aghia Paraskevi",
           "starRating": 5,
           "userRating": 4,
           "whatsIncluded": ["Breakfast", "Tour", "Spa"],
-          "totalPrice": "1200",
-          "pricePerPerson": "400"
+          "totalPrice": 1200,
+          "pricePerPerson": 400
         },
         {
           "id": 2,
-          "imageSrc": "/images/Aghios-Fokas.png",
+          "imageSrc": "/images/Aghios-Fokas.avif",
           "title": "Aghios Fokas",
           "starRating": 4,
           "userRating": 4,
           "whatsIncluded": ["Breakfast", "Tour"],
-          "totalPrice": "1000",
-          "pricePerPerson": "250"
+          "totalPrice": 1000,
+          "pricePerPerson": 250
         },
         {
           "id": 3,
-          "imageSrc": "/images/Aix-En-Provence.png",
+          "imageSrc": "/images/Aix-En-Provence.avif",
           "title": "Aix En Provence",
           "starRating": 5,
           "userRating": 5,
           "whatsIncluded": ["Breakfast", "Tour", "Spa", "Fishing"],
-          "totalPrice": "1500",
-          "pricePerPerson": "500"
+          "totalPrice": 1500,
+          "pricePerPerson": 500
         },
         {
           "id": 4,
-          "imageSrc": "/images/Algarve.png",
+          "imageSrc": "/images/Algarve.avif",
           "title": "Algarve",
           "starRating": 3,
           "userRating": 3,
           "whatsIncluded": ["Breakfast"],
-          "totalPrice": "800",
-          "pricePerPerson": "200"
+          "totalPrice": 800,
+          "pricePerPerson": 200
         },
         {
           "id": 5,
-          "imageSrc": "/images/Arenal-Den-Castell.png",
+          "imageSrc": "/images/Arenal-Den-Castell.avif",
           "title": "Arenal Den Castell",
           "starRating": 4,
           "userRating": 4,
           "whatsIncluded": ["Breakfast", "Tour", "Spa"],
-          "totalPrice": "1200",
-          "pricePerPerson": "400"
+          "totalPrice": 1200,
+          "pricePerPerson": 400
         }
       ]
     },

@@ -2,11 +2,12 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 
 export const HeaderSC = styled.header`
-  height: 200px;
+  height: 150px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 2px solid black;
 `;
 
 const Header = (): ReactElement => {

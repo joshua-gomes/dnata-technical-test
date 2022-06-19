@@ -1,9 +1,14 @@
-import type { NextPage } from "next";
+import { NextPage } from "next";
 import { getNextApiBaseUrl } from "@libs/shared/helpers/next/getEnv";
 import CataloguePage from "@libs/pages/CataloguePage";
+import { CatalogueItemsType } from "@libs/shared/types/api/services/catalogue";
 
-const Catalogue: NextPage = (props) => {
-  return <CataloguePage {...props} />;
+interface CatalogueProps {
+  catalogueItems: CatalogueItemsType;
+}
+
+const Catalogue = ({ catalogueItems, ...props }: CatalogueProps) => {
+  return <CataloguePage catalogueItems={catalogueItems} {...props} />;
 };
 
 export async function getServerSideProps() {
@@ -16,7 +21,7 @@ export async function getServerSideProps() {
 
     const { data } = await response.json();
 
-    return { props: { catalogueData: data } };
+    return { props: { catalogueItems: data } };
   } catch (e) {
     return {
       redirect: {

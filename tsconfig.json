@@ -18,7 +18,8 @@
     "paths": {
       "@libs/*": ["libs/*"],
       "@helpers/*": ["libs/shared/helpers/*"],
-      "@components/*": ["libs/shared/components/*"]
+      "@components/*": ["libs/shared/components/*"],
+      "@types/*": ["libs/shared/types/*"]
     }
   },
   "include": [
